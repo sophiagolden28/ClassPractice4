@@ -84,6 +84,7 @@ public class TestAnimal {
         System.out.println("Population count: " + snail.getAnimalPopulation());
         System.out.println("Alive animals: " + snail.getAnimalsAlive());
         System.out.println();
+        
        
     }
     

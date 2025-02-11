@@ -21,28 +21,37 @@ public class Zoo {
         
     }
     
-    //add animal method to add it to an array
-    public void addAnimal(Animal animal){
+    //to keep track
+    public boolean isZooFull(){
+    
+        boolean full = false;
         
         //full cages to keep track
         int fullCages = 0;
         
         //for each cage in cages
-        for (int j = 0; j < cages.length; j++) {
-            
+        for (Animal cage : cages) {
             //if there's a full cage
-            if (cages[j] != null) {
-                
+            if (cage != null) {
                 //increment the fullCages variable
                 fullCages += 1;
-                
-            }   
-            
-                
+            }
         }
         
         //if there are no empty cages
         if (fullCages == cages.length) {
+            full = true;
+        }
+        
+        return full;
+    
+    }
+    
+    //add animal method to add it to an array
+    public void addAnimal(Animal animal){
+        
+        //if there are no empty cages
+        if (this.isZooFull() == true) {
             System.out.println("The zoo is full!");
             
         } else {
@@ -55,6 +64,9 @@ public class Zoo {
                 if (cages[i] == null) {
                     //make the animal that spot in the array
                     cages[i] = animal;
+                    
+                    //kill the loop after adding the animal
+                    break;
                 }
             
             }
@@ -81,7 +93,7 @@ public class Zoo {
             if (cages[i] != null) {
                     
                     //if it isn't, print the animal nicely
-                    System.out.println("    " + cages[i]);
+                    System.out.println("    " + cages[i].name);
                 
                 
                 }
@@ -92,6 +104,101 @@ public class Zoo {
     
     
     }
+    
+    //number of animals method
+    public int numberOfAnimals(){
+               
+        //full cages to keep track
+        int fullCages = 0;
+        
+        //for each cage in cages
+        for (int j = 0; j < cages.length; j++) {
+            
+            //if there's a full cage
+            if (cages[j] != null) {
+                
+                //increment the fullCages variable
+                fullCages += 1;
+                
+            }   
+            
+                
+        }
+        
+        //we return the number of full cages (number of animal)
+        return fullCages;
+        
+    
+    }
+    
+    //total mass method
+    public int totalMass(){
+        
+        //initialize mass variable
+        int massTotal = 0;
+        
+        //for each animal we know
+        for (int i = 0; i < this.numberOfAnimals(); i++) {
+            
+            //add their mass to the mass variable
+            massTotal += cages[i].mass; 
+            
+        }
+ 
+        //return the mass variable
+        return massTotal;
+    
+    
+    
+    }
+    
+    //get the total legs method (basically same as getting the total mass)
+    public int totalLegs(){
+    
+        //initialize legs variable
+        int legsTotal = 0;
+        
+        //for each animal we know
+        for (int i = 0; i < this.numberOfAnimals(); i++) {
+            
+            //add their mass to the mass variable
+            legsTotal += cages[i].legs; 
+            
+        }
+ 
+        //return the mass variable
+        return legsTotal;
+    
+    
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
