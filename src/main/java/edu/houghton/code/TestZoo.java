@@ -24,9 +24,10 @@ public class TestZoo {
         
         myZoo.print();
        
-        //while the zoo isn't full we add the snail
+        //while the zoo isn't full we add the snail (WITH MOST RECENT MODIFICATIONS THIS IS AN INFINITE LOOP)
         while (myZoo.isZooFull() == false) {            
-            myZoo.addAnimal(snail);   
+            myZoo.addAnimal(snail);
+            myZoo.print();      
         }
         
         System.out.println("");
