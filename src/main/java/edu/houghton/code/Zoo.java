@@ -51,18 +51,18 @@ public class Zoo {
 
     //add animal method to add it to an array
     public void addAnimal(Animal animal) {
-        
+
         if (this.isZooFull() == true) {
-                //modifying so that the zoo is never full
-                System.out.println("this zoo is full!");
-                double newCagesLength;
-                newCagesLength = (int) Math.ceil(cages.length * 1.5);
-                cages = Arrays.copyOf(cages, (int) newCagesLength);
+            //modifying so that the zoo is never full
+            System.out.println("this zoo is full!");
+            double newCagesLength;
+            newCagesLength = (int) Math.ceil(cages.length * 1.5);
+            cages = Arrays.copyOf(cages, (int) newCagesLength);
         }
-        
+
         //add the animal to the first available spot
         for (int i = 0; i < cages.length; i++) {
-            
+
             //if cages at that spot is empty...
             if (cages[i] == null) {
                 //make the animal that spot in the array
@@ -257,33 +257,15 @@ public class Zoo {
 
         //if there are 2 or more of the parent species
         if (speciesCounter >= 2) {
+
+            //make the animal that spot in the array
+            //find parent avg weight
+            float averageParentWeight = (parentA.mass + parentB.mass) / 2;
+            //make baby object with parent stats
+            Animal baby = new Animal(averageParentWeight, speciesName, parentA.legs);
             
-            //have to add this in case the array is full
-            if (this.isZooFull() == true) {
-                //modifying so that the zoo is never full
-                double newCagesLength;
-                newCagesLength = (int) Math.ceil(cages.length * 1.5);
-                cages = Arrays.copyOf(cages, (int) newCagesLength);
-            }
+            this.addAnimal(baby);
             
-            //add the animal to the first available spot
-            for (int j = 0; j < cages.length; j++) {
-
-                //if cages at that spot is empty...
-                if (cages[j] == null) {
-                    //make the animal that spot in the array
-                    //find parent avg weight
-                    float averageParentWeight = (parentA.mass + parentB.mass) / 2;
-                    //make baby object with parent stats
-                    Animal baby = new Animal(averageParentWeight, speciesName, parentA.legs);
-                    //put it in the array
-                    cages[j] = baby;
-                    //kill the loop after adding the animal
-                    break;
-                }
-
-            }
-
         }
 
     }
