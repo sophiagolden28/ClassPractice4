@@ -208,9 +208,29 @@ public class Zoo {
 
     }
 
-    //reordering method (not sure if i did this right)
+    //reordering method
     public void reorder() {
-        Arrays.sort(cages);
+
+        //make placeholder
+        Animal[] newCages = new Animal[cages.length];
+
+        //for each one in cages
+        for (Animal cage : cages) {
+            //if it's full
+            if (cage != null) {
+                //for each one in new cages
+                for (int j = 0; j < newCages.length; j++) {
+                    //if it's not full
+                    if (newCages[j] == null) {
+                        //make the animal the first available spot
+                        newCages[j] = cage;
+                    }
+                }
+            }
+        }
+
+        //make the original array be the new array
+        cages = newCages;
     }
 
     //make baby method
@@ -262,9 +282,9 @@ public class Zoo {
             float averageParentWeight = (parentA.mass + parentB.mass) / 2;
             //make baby object with parent stats
             Animal baby = new Animal(averageParentWeight, speciesName, parentA.legs);
-            
+
             this.addAnimal(baby);
-            
+
         }
 
     }
