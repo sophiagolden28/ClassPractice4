@@ -54,7 +54,6 @@ public class Zoo {
 
         if (this.isZooFull() == true) {
             //modifying so that the zoo is never full
-            System.out.println("this zoo is full!");
             double newCagesLength;
             newCagesLength = (int) Math.ceil(cages.length * 1.5);
             cages = Arrays.copyOf(cages, (int) newCagesLength);
